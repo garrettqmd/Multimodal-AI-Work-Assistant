@@ -3,7 +3,7 @@
 > 基于 Dify 平台编排的企业级多模态 AI 智能体中枢。集成**全模态会议纪要处理**、**智能周报生成**与**内部规章 RAG 检索**。本项目旨在通过 Agentic Workflow（智能体工作流）与高阶 Prompt 工程，将大模型从“单点对话玩具”转化为深度嵌入企业协同生态的“工程生产力工具”。
 
 [![Powered by Dify](https://img.shields.io/badge/Powered%20by-Dify-orange.svg)](https://dify.ai)
-[![AI Models](https://img.shields.io/badge/AI%20Models-Gemini%20%7C%20Claude%20%7C%20GPT--5.svg)](#)
+[![AI Models](https://img.shields.io/badge/AI%20Models-Gemini%20%7C%20Claude%20%7C%20GPT--4o-green.svg)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 ---
