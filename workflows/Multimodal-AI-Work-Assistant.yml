@@ -1,0 +1,1844 @@
+app:
+  description: ''
+  icon: face_with_cowboy_hat
+  icon_background: '#D1E9FF'
+  icon_type: emoji
+  mode: advanced-chat
+  name: 智能助手
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openrouter:0.0.43@241af6052a82fa08c0d7c3756d7f2a57cc16d8b3c05d7fd58088ece28cae9e34
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/siliconflow:0.0.46@3e8e3320dd5569308c25e897d05237941dd5b67954303c063b1c7fdcea84fc0f
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: stvlynn/ffmpeg:0.0.1@cdd0c760bac66f531e411557b92284fc2766d903123a383ef014c5902793c052
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1775980996973-source-1775981002975-target
+      selected: false
+      source: '1775980996973'
+      sourceHandle: source
+      target: '1775981002975'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1775981002975-2-1776005685077-target
+      selected: false
+      source: '1775981002975'
+      sourceHandle: '2'
+      target: '1776005685077'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1776005685077-source-1776005688780-target
+      selected: false
+      source: '1776005685077'
+      sourceHandle: source
+      target: '1776005688780'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1776005688780-source-1776005691805-target
+      selected: false
+      source: '1776005688780'
+      sourceHandle: source
+      target: '1776005691805'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1776005691805-source-1776006007026-target
+      selected: false
+      source: '1776005691805'
+      sourceHandle: source
+      target: '1776006007026'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1775981002975-1775981073602-1776006073730-target
+      selected: false
+      source: '1775981002975'
+      sourceHandle: '1775981073602'
+      target: '1776006073730'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1776006073730-source-1776006133071-target
+      selected: false
+      source: '1776006073730'
+      sourceHandle: source
+      target: '1776006133071'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1776006133071-source-1776006220135-target
+      selected: false
+      source: '1776006133071'
+      sourceHandle: source
+      target: '1776006220135'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: 1776223972243-source-1776224104890-target
+      selected: false
+      source: '1776223972243'
+      sourceHandle: source
+      target: '1776224104890'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: if-else
+      id: 1775981002975-1-1776225355091-target
+      source: '1775981002975'
+      sourceHandle: '1'
+      target: '1776225355091'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: tool
+      id: 1776225355091-true-1776223972243-target
+      source: '1776225355091'
+      sourceHandle: 'true'
+      target: '1776223972243'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1776225355091-4c87b7e1-575e-4b46-bb4c-b593f10fb7c6-1776224002432-target
+      source: '1776225355091'
+      sourceHandle: 4c87b7e1-575e-4b46-bb4c-b593f10fb7c6
+      target: '1776224002432'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1776225355091-bdc6bbb4-ce88-4b4d-8332-7297645fbf7d-1776225464552-target
+      source: '1776225355091'
+      sourceHandle: bdc6bbb4-ce88-4b4d-8332-7297645fbf7d
+      target: '1776225464552'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1776224104890-source-1776227223762-target
+      source: '1776224104890'
+      sourceHandle: source
+      target: '1776227223762'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: code
+      id: 1776224002432-source-1776227223762-target
+      source: '1776224002432'
+      sourceHandle: source
+      target: '1776227223762'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1776225464552-source-1776227223762-target
+      source: '1776225464552'
+      sourceHandle: source
+      target: '1776227223762'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1776225355091-false-1776227223762-target
+      selected: false
+      source: '1776225355091'
+      sourceHandle: 'false'
+      target: '1776227223762'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1776227223762-source-1776228336434-target
+      source: '1776227223762'
+      sourceHandle: source
+      target: '1776228336434'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: question-classifier
+      id: 1776228336434-source-1776231274718-target
+      source: '1776228336434'
+      sourceHandle: source
+      target: '1776231274718'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1776231274718-1776231277313-1776235667693-target
+      source: '1776231274718'
+      sourceHandle: '1776231277313'
+      target: '1776235667693'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: http-request
+      id: 1776235667693-source-1776235672061-target
+      source: '1776235667693'
+      sourceHandle: source
+      target: '1776235672061'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1776231274718-1776231277313-1776236288231-target
+      source: '1776231274718'
+      sourceHandle: '1776231277313'
+      target: '1776236288231'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1776231274718-2-1776238691128-target
+      source: '1776231274718'
+      sourceHandle: '2'
+      target: '1776238691128'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1776236288231-source-1776238740276-target
+      source: '1776236288231'
+      sourceHandle: source
+      target: '1776238740276'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1776238691128-source-1776238756231-target
+      source: '1776238691128'
+      sourceHandle: source
+      target: '1776238756231'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1776231274718-1-1776241051343-target
+      source: '1776231274718'
+      sourceHandle: '1'
+      target: '1776241051343'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1776241051343-source-1776241144338-target
+      source: '1776241051343'
+      sourceHandle: source
+      target: '1776241144338'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1776231274718-1776231277838-1776241168796-target
+      source: '1776231274718'
+      sourceHandle: '1776231277838'
+      target: '1776241168796'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1776241168796-source-1776241481167-target
+      source: '1776241168796'
+      sourceHandle: source
+      target: '1776241481167'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - audio
+          - video
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: video
+          options: []
+          placeholder: ''
+          required: false
+          type: file
+          variable: video
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: image
+          max_length: 5
+          options: []
+          placeholder: ''
+          required: false
+          type: file-list
+          variable: image
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: text_file
+          max_length: 5
+          options: []
+          placeholder: ''
+          required: false
+          type: file-list
+          variable: text_file
+      height: 160
+      id: '1775980996973'
+      position:
+        x: -194.7687029066421
+        y: -157.63505254016923
+      positionAbsolute:
+        x: -194.7687029066421
+        y: -157.63505254016923
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        classes:
+        - id: '1'
+          name: '- 核心鉴别特征：用户提供的材料或主题是关于“会议”、“讨论记录”、“需求评审”。 - 典型动作：只要用户要求对“会议附件”、“讨论内容”进行“提取需求”、“生成PRD”、“分配任务”或“总结/提炼会议内容”，无条件走本分类。
+            - 防错红线：即使指令中包含“总结”二字，只要对象是“会议”，必须归为分类 1。'
+        - id: '2'
+          name: 【分类 2：个人工作汇报 (Weekly/Daily Report)】 - 核心鉴别特征：用户提供的材料是“个人的流水账”、“自己做了什么事”。
+            - 典型动作：明确要求生成“周报”、“日报”或“个人工作总结”。 - 防错红线：本分类仅限于“包装个人工作成果”。如果用户是要求总结多人参与的会议，绝对禁止走本分类！
+        - id: '1775981073602'
+          name: 【分类 3：制度流程问答 (Rules Q&A)】 - 核心鉴别特征：用户抛出了一个明确的“疑问句”，想要查阅某种规定。 - 典型动作：询问“怎么报销”、“请假流程是什么”、“某某制度在哪里”。
+            - 防错红线：如果用户是在让你处理/总结一段长文本或附件，绝对禁止走本分类！
+        instruction: '# Role: 核心意图路由引擎 (Core Intent Routing Engine)
+
+
+          # Objective:
+
+          精准分析用户的核心诉求，进行唯一路由分发。你必须看穿用户的动词（如“总结”、“整理”），精准定位其【处理对象】和【最终场景】。
+
+
+          # Classification Rules (必须严格遵守的分类法则):
+
+
+          【分类 1：会议处理与业务需求 (Meeting & PRD)】
+
+          - 核心鉴别特征：用户提供的材料或主题是关于“会议”、“讨论记录”、“需求评审”。
+
+          - 典型动作：只要用户要求对“会议附件”、“讨论内容”进行“提取需求”、“生成PRD”、“分配任务”或“总结/提炼会议内容”，无条件走本分类。
+
+          - 防错红线：即使指令中包含“总结”二字，只要对象是“会议”，必须归为分类 1。
+
+
+          【分类 2：个人工作汇报 (Weekly/Daily Report)】
+
+          - 核心鉴别特征：用户提供的材料是“个人的流水账”、“自己做了什么事”。
+
+          - 典型动作：明确要求生成“周报”、“日报”或“个人工作总结”。
+
+          - 防错红线：本分类仅限于“包装个人工作成果”。如果用户是要求总结多人参与的会议，绝对禁止走本分类！
+
+
+          【分类 3：制度流程问答 (Rules Q&A)】
+
+          - 核心鉴别特征：用户抛出了一个明确的“疑问句”，想要查阅某种规定。
+
+          - 典型动作：询问“怎么报销”、“请假流程是什么”、“某某制度在哪里”。
+
+          - 防错红线：如果用户是在让你处理/总结一段长文本或附件，绝对禁止走本分类！'
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        query_variable_selector:
+        - '1775980996973'
+        - sys.query
+        selected: false
+        title: 问题分类器
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 207
+      id: '1775981002975'
+      position:
+        x: 91.55340251146856
+        y: 111.94455000946685
+      positionAbsolute:
+        x: 91.55340251146856
+        y: 111.94455000946685
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            response_format: text
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 7acce994-482c-4fa9-9418-b97075c6c52d
+          role: system
+          text: '# Role
+
+            你是一名专业、高效的互联网公司职场精英。你的任务是将用户提供的“口语化流水账”<user_input>里的内容整理成一份结构严谨、条理清晰的《本周工作报告》草稿。
+
+
+            # Report Structure (周报标准结构)
+
+            请严格按照以下 Markdown 格式输出周报草稿：
+
+
+            ### 一、 本周工作进展
+
+            - **[项目/事项名称]**：简述具体的动作和结果
+
+
+            ### 二、 遇到的问题与需要协调的资源
+
+            - 提炼用户输入中遇到的困难、冲突或阻碍。如果没有明确提及，请写“暂无”。
+
+
+            ### 三、 下周工作计划
+
+            - 根据本周的进展和未完成的事项，合理推演下周的核心待办任务。
+
+
+            # Rules
+
+            1. 语言风格要求：客观、精炼、专业（使用诸如“对齐”、“落地”、“闭环”等互联网专业术语进行适当润色）。
+
+            2. 绝对忠于用户的原始输入信息，不要凭空捏造用户没做过的事情。
+
+            3. 即使你觉得用户的表述有问题，也请先生成草稿。后续会有专门的审查节点来负责纠错。
+
+
+            <user_input>{{#sys.query#}}</user_input>'
+        - id: 10f86c4e-3186-4946-91ef-2dabbb3aa2a0
+          role: user
+          text: '{{#sys.query#}}'
+        retry_config:
+          max_retries: 5
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: NODE1
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1776005685077'
+      position:
+        x: 544.8645801646804
+        y: 204.99999999999994
+      positionAbsolute:
+        x: 544.8645801646804
+        y: 204.99999999999994
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.1
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: a3c439e1-6d7d-4257-904f-f7ee2eda12bd
+          role: system
+          text: "\n你是一个报告审查官。负责对前一个LLM生成的工作报告<work_report>{{#1776005685077.text#}}</work_report>结合用户的实际输入<user_input>{{#sys.query#}}</user_input>进行准确性（工作报告是否和用户提供的数据一致）、完整性（报告是否包含用户提供的所有要素）、安全性（是否涉及个人、公司、社会安全的问题）的评估，以JSON结构化输出，示例：\n\
+            {\n  \"overall_status\": \"rejected\", \n  \"review_summary\": \"报告整体结构尚可，但在准确性和安全性上存在两处明显缺陷，需重写。\"\
+            ,\n  \"critiques\": [\n    {\n      \"dimension\": \"准确性\", \n      \"\
+            error_quote\": \"今天完成了所有的调研任务...\",\n      \"reason\": \"与用户原始输入不符，用户原话为'调研了3家竞品，没什么特别亮眼'，草稿夸大了事实。\"\
+            ,\n      \"actionable_suggestion\": \"严格按照用户原话修正，不要虚构未发生的任务。\"\n    },\n\
+            \    {\n      \"dimension\": \"安全性\",\n      \"error_quote\": \"跟前端老李吵了一架，他不愿接需求。\"\
+            ,\n      \"reason\": \"涉及公司内部人际矛盾与负面情绪，不适合出现在正式周报中。\",\n      \"actionable_suggestion\"\
+            : \"将情绪化表达客观化。建议修改为：'与前端团队就需求排期进行了沟通对齐，目前存在部分排期风险，下周持续跟进。'\"\n    }\n\
+            \  ]\n}"
+        retry_config:
+          max_retries: 5
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              critiques:
+                description: 具体的审查意见列表
+                items:
+                  properties:
+                    actionable_suggestion:
+                      description: 给下游修改节点的具体可执行建议
+                      type: string
+                    dimension:
+                      description: 审查维度，如'完整性'、'准确性'、'安全性'等
+                      type: string
+                    error_quote:
+                      description: 草稿中出错的原文引用
+                      type: string
+                    reason:
+                      description: 判定为错误的具体原因
+                      type: string
+                  required:
+                  - dimension
+                  - error_quote
+                  - reason
+                  - actionable_suggestion
+                  type: object
+                type: array
+              overall_status:
+                description: 审查状态，通常为 'approved' 或 'rejected'
+                type: string
+              review_summary:
+                description: 对草稿的整体评价总结
+                type: string
+            required:
+            - overall_status
+            - review_summary
+            - critiques
+            type: object
+        structured_output_enabled: true
+        title: Node2
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1776005688780'
+      position:
+        x: 942.1717858447755
+        y: 204.99999999999994
+      positionAbsolute:
+        x: 942.1717858447755
+        y: 204.99999999999994
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.1
+          mode: chat
+          name: openai/gpt-4o-mini
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: c6d88ed0-2830-49b9-9b7f-7e8e45cb4ecd
+          role: system
+          text: '# Role
+
+            你是一名资深职场报告专家。你的任务是根据<critique>【审查裁判】给出的修改建议，对<draft>【初版草稿】进行精准重写，最终输出一份结构清晰、老板爱看的工作周报。
+
+
+            # Rules (修改法则)
+
+            1. 【状态判定】首先读取 `<critique>` 中的 `overall_status`。如果是 "approved"，请直接输出 `<draft>`
+            原文，结束任务。
+
+            2. 【精准手术】如果是 "rejected"，请严格遍历 `critiques` 数组中的每一项修改建议。
+
+            3. 【克制修改】仅针对审查报告中指出的错误点进行修改（增删改）。对于审查报告中**没有提及**的部分，绝对忠于初版草稿，严禁私自发挥或添加虚构内容！
+
+            4. 【排版规范】最终输出必须采用排版精美的 Markdown 格式（使用适当的标题、加粗和列表）。绝对不要在最终结果里包含任何 JSON
+            代码、修改过程或解释性废话。
+
+
+            # Inputs (上游数据输入)
+
+            <user_input>
+
+            {{#sys.query#}}
+
+            </user_input>
+
+
+            <draft>
+
+            {{#1776005685077.text#}}
+
+            </draft>
+
+
+            <critique>
+
+            {{#1776005688780.text#}}
+
+            </critique>'
+        retry_config:
+          max_retries: 5
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: NODE3
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1776005691805'
+      position:
+        x: 1332.1594836140978
+        y: 204.99999999999994
+      positionAbsolute:
+        x: 1332.1594836140978
+        y: 204.99999999999994
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1776005691805.text#}}'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 102
+      id: '1776006007026'
+      position:
+        x: 1674.5619440602334
+        y: 204.99999999999994
+      positionAbsolute:
+        x: 1674.5619440602334
+        y: 204.99999999999994
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        dataset_ids:
+        - fl8Nc5MJbHJ3BO2Qq9C9YCcDhH0vjqfG4prNm9HSjyxsopg8SjBkBkyMVijMvlAf
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: netease-youdao/bce-reranker-base_v1
+            provider: langgenius/siliconflow/siliconflow
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1775980996973'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 89
+      id: '1776006073730'
+      position:
+        x: 560.5344903040105
+        y: 426
+      positionAbsolute:
+        x: 560.5344903040105
+        y: 426
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1776006073730'
+          - result
+        model:
+          completion_params:
+            temperature: 0.1
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: d1317a22-68eb-42ab-a0db-6d73b1c96cf1
+          role: system
+          text: '# 角色与任务 你是一个温暖、体贴的员工服务助手。请严格根据提供的知识库内容，为用户解答问题。 # 核心纪律 (Rules) 1.
+            绝对禁止胡编乱造！所有解答必须基于知识库文段。 2. 若文段中无法检索到答案或无法准确回答用户问题时绝对不允许自行推断，强制执行：必须且只能输出以下这句话：
+            “抱歉，您的问题无法通过知识库解答，请联系技术部门更新或咨询相关负责部门” # 回答规范 (Format) 如果找到了答案，你的回复【必须】严格包含两部分，且顺序不可打乱：
+            1. 【解答区】：用有温度、体贴的语气给出清晰严谨的解答。 2. 【溯源区】：在解答完毕后，必须使用 Markdown 的引用格式（>）原封不动地贴出你的依据原文。'
+        - id: de7cc17c-5983-4e0c-807c-fe5c6fb1bb34
+          role: user
+          text: '{{#context#}}{{#sys.query#}}'
+        retry_config:
+          max_retries: 5
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: 内部百度
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1776006133071'
+      position:
+        x: 971.964404506369
+        y: 426
+      positionAbsolute:
+        x: 971.964404506369
+        y: 426
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1776006133071.text#}}'
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 102
+      id: '1776006220135'
+      position:
+        x: 1332.1594836140978
+        y: 426
+      positionAbsolute:
+        x: 1332.1594836140978
+        y: 426
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The video file to extract audio from
+            ja_JP: The video file to extract audio from
+            pt_BR: O arquivo de vídeo para extrair o áudio
+            zh_Hans: 要从中提取音频的视频文件
+          label:
+            en_US: Video File
+            ja_JP: Video File
+            pt_BR: Arquivo de Vídeo
+            zh_Hans: 视频文件
+          llm_description: The video file to extract audio from
+          max: null
+          min: null
+          name: video
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The format of the extracted audio (mp3, aac, wav, ogg, flac)
+            ja_JP: The format of the extracted audio (mp3, aac, wav, ogg, flac)
+            pt_BR: O formato do áudio extraído (mp3, aac, wav, ogg, flac)
+            zh_Hans: 提取的音频格式（mp3、aac、wav、ogg、flac）
+          label:
+            en_US: Audio Format
+            ja_JP: Audio Format
+            pt_BR: Formato de Áudio
+            zh_Hans: 音频格式
+          llm_description: The format to save the extracted audio in. Options are
+            'mp3', 'aac', 'wav', 'ogg', 'flac'. Default is 'mp3'.
+          max: null
+          min: null
+          name: audio_format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          audio_format: ''
+          video: ''
+        plugin_id: stvlynn/ffmpeg
+        plugin_unique_identifier: stvlynn/ffmpeg:0.0.1@cdd0c760bac66f531e411557b92284fc2766d903123a383ef014c5902793c052
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/plugin/icon?tenant_id=6001d18d-b3bc-4c68-bf57-01dddf46e4d7&filename=23f9622c2a97e59f1377ee7138608b718dacb9861f3f31239d3c7e79b9eafd92.svg
+        provider_id: stvlynn/ffmpeg/ffmpeg
+        provider_name: stvlynn/ffmpeg/ffmpeg
+        provider_type: builtin
+        selected: false
+        title: 提取音频
+        tool_configurations: {}
+        tool_description: 从视频文件中提取音频轨道
+        tool_label: 提取音频
+        tool_name: extract_audio
+        tool_node_version: '2'
+        tool_parameters:
+          audio_format:
+            type: mixed
+            value: mp3
+          video:
+            type: variable
+            value:
+            - '1775980996973'
+            - video
+        type: tool
+      height: 51
+      id: '1776223972243'
+      position:
+        x: 715.9662185043405
+        y: -167.5287429490986
+      positionAbsolute:
+        x: 715.9662185043405
+        y: -167.5287429490986
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_array_file: false
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1775980996973'
+        - text_file
+      height: 103
+      id: '1776224002432'
+      position:
+        x: 715.9662185043405
+        y: -85.33489005663968
+      positionAbsolute:
+        x: 715.9662185043405
+        y: -85.33489005663968
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The audio file to be converted.
+            ja_JP: The audio file to be converted.
+            pt_BR: The audio file to be converted.
+            zh_Hans: 要转换的音频文件。
+          label:
+            en_US: Audio File
+            ja_JP: Audio File
+            pt_BR: Audio File
+            zh_Hans: 音频文件
+          llm_description: The audio file to be converted.
+          max: null
+          min: null
+          name: audio_file
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: All available ASR models. You can config model in the Model Provider
+              of Settings.
+            ja_JP: All available ASR models. You can config model in the Model Provider
+              of Settings.
+            pt_BR: All available ASR models. You can config model in the Model Provider
+              of Settings.
+            zh_Hans: 所有可用的 ASR 模型。你可以在设置中的模型供应商里配置。
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: Model
+          llm_description: null
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: null
+            label:
+              en_US: gpt-4o-mini-transcribe(langgenius/openai/openai)
+              ja_JP: gpt-4o-mini-transcribe(langgenius/openai/openai)
+              pt_BR: gpt-4o-mini-transcribe(langgenius/openai/openai)
+              zh_Hans: gpt-4o-mini-transcribe(langgenius/openai/openai)
+            value: langgenius/openai/openai#gpt-4o-mini-transcribe
+          - icon: null
+            label:
+              en_US: gpt-4o-transcribe(langgenius/openai/openai)
+              ja_JP: gpt-4o-transcribe(langgenius/openai/openai)
+              pt_BR: gpt-4o-transcribe(langgenius/openai/openai)
+              zh_Hans: gpt-4o-transcribe(langgenius/openai/openai)
+            value: langgenius/openai/openai#gpt-4o-transcribe
+          - icon: null
+            label:
+              en_US: whisper-1(langgenius/openai/openai)
+              ja_JP: whisper-1(langgenius/openai/openai)
+              pt_BR: whisper-1(langgenius/openai/openai)
+              zh_Hans: whisper-1(langgenius/openai/openai)
+            value: langgenius/openai/openai#whisper-1
+          - icon: null
+            label:
+              en_US: FunAudioLLM/SenseVoiceSmall(langgenius/siliconflow/siliconflow)
+              ja_JP: FunAudioLLM/SenseVoiceSmall(langgenius/siliconflow/siliconflow)
+              pt_BR: FunAudioLLM/SenseVoiceSmall(langgenius/siliconflow/siliconflow)
+              zh_Hans: FunAudioLLM/SenseVoiceSmall(langgenius/siliconflow/siliconflow)
+            value: langgenius/siliconflow/siliconflow#FunAudioLLM/SenseVoiceSmall
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        params:
+          audio_file: ''
+          model: ''
+        plugin_id: null
+        plugin_unique_identifier: ''
+        provider_icon: https://cloud.dify.ai/console/api/workspaces/current/tool-provider/builtin/audio/icon
+        provider_id: audio
+        provider_name: audio
+        provider_type: builtin
+        selected: false
+        title: 语音转文字
+        tool_configurations:
+          model:
+            type: constant
+            value: langgenius/openai/openai#whisper-1
+        tool_description: 将音频文件转换为文本。
+        tool_label: Speech To Text
+        tool_name: asr
+        tool_node_version: '2'
+        tool_parameters:
+          audio_file:
+            type: variable
+            value:
+            - '1776223972243'
+            - files
+        type: tool
+      height: 87
+      id: '1776224104890'
+      position:
+        x: 995.2536637384355
+        y: -167.5287429490986
+      positionAbsolute:
+        x: 995.2536637384355
+        y: -167.5287429490986
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: exists
+            id: b6f31b3f-566f-4137-824a-f2d62c287f57
+            value: ''
+            varType: file
+            variable_selector:
+            - '1775980996973'
+            - video
+          id: 'true'
+          logical_operator: and
+        - case_id: 4c87b7e1-575e-4b46-bb4c-b593f10fb7c6
+          conditions:
+          - comparison_operator: exists
+            id: f5089666-7d79-41c7-a477-98943df34537
+            value: ''
+            varType: file
+            variable_selector:
+            - '1775980996973'
+            - text_file
+          id: 4c87b7e1-575e-4b46-bb4c-b593f10fb7c6
+          logical_operator: and
+        - case_id: bdc6bbb4-ce88-4b4d-8332-7297645fbf7d
+          conditions:
+          - comparison_operator: exists
+            id: b935ea9a-1e52-40e6-8af8-c79b495a927a
+            value: ''
+            varType: file
+            variable_selector:
+            - '1775980996973'
+            - image
+          id: bdc6bbb4-ce88-4b4d-8332-7297645fbf7d
+          logical_operator: and
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 219
+      id: '1776225355091'
+      position:
+        x: 410.5021263350975
+        y: -92.74465106620187
+      positionAbsolute:
+        x: 410.5021263350975
+        y: -92.74465106620187
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.1
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 6d467d6f-c873-4afd-be3c-53559e92a472
+          role: system
+          text: '# Role: 高级多模态 OCR 解析引擎
+
+
+            # Objective:
+
+            你现在的唯一任务是精准提取用户上传的图片（如会议白板、手写笔记、PPT截图）中的所有文字内容。你不需要理解业务逻辑，不需要回答图片中的问题，只需进行像素级的文字复刻。
+
+
+            # Rules (硬性约束):
+
+            1. 【绝对忠实】严禁对提取的文本进行任何总结、润色、翻译或解释。原图中有错别字，你也必须照抄错别字。
+
+            2. 【格式保留】尽可能还原物理排版结构。如果原图是列表，请使用 Markdown 的 `-` 或 `1.` 还原；如果原图是表格，请尝试输出
+            Markdown 表格；如果是脑图或流程图，请按从上到下、从左到右的逻辑顺序转化为文本层级。
+
+            3. 【模糊兜底】遇到因反光、遮挡或字迹极其潦草导致无法确认的词汇，坚决不瞎猜，强制使用 `[模糊不清]` 占位符替代。
+
+            4. 【零废话输出】不要包含任何前缀语气词（如“好的，图片上的文字是：”），直接输出提取到的正文内容。
+
+
+            # Output Context:
+
+            请直接输出提取后的纯文本。'
+        reasoning_format: tagged
+        selected: false
+        title: ORC图文转换
+        type: llm
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1775980996973'
+            - image
+          enabled: true
+      height: 87
+      id: '1776225464552'
+      position:
+        x: 715.9662185043405
+        y: 34.79287266298273
+      positionAbsolute:
+        x: 715.9662185043405
+        y: 34.79287266298273
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        code: "def main(speech: str, doc: str, ocr: str, query: str) -> dict:\n  \
+          \  source_type = \"unknown\"\n    final_text = \"\"\n    \n    # 如果传来的是列表，就用换行符把它缝合起来；如果传来的是字符串，就保持原样\n\
+          \    def safe_parse(data):\n        if isinstance(data, list):\n       \
+          \     return \"\\n\".join([str(item) for item in data])\n        elif data:\n\
+          \            return str(data)\n        return \"\"\n\n    # 使用 if-elif 确保严格的优先级\n\
+          \    if speech:\n        source_type = \"audio_transcription\" \n      \
+          \  final_text = safe_parse(speech)\n    elif doc:\n        source_type =\
+          \ \"document_extraction\" \n        final_text = safe_parse(doc)\n    elif\
+          \ ocr:\n        source_type = \"image_ocr\"           \n        final_text\
+          \ = safe_parse(ocr)\n    elif query:\n        source_type = \"user_direct_input\"\
+          \   \n        final_text = safe_parse(query)\n    else:\n        source_type\
+          \ = \"empty\"\n        final_text = \"未提取到任何有效内容\"\n        \n    return\
+          \ {\n        \"result_text\": final_text,\n        \"source_type\": source_type\n\
+          \    }"
+        code_language: python3
+        outputs:
+          result_text:
+            children: null
+            type: string
+          source_type:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1776224104890'
+          - text
+          value_type: string
+          variable: speech
+        - value_selector:
+          - '1776224002432'
+          - text
+          value_type: string
+          variable: doc
+        - value_selector:
+          - '1776225464552'
+          - text
+          value_type: string
+          variable: ocr
+        - value_selector:
+          - sys
+          - query
+          value_type: string
+          variable: query
+      height: 51
+      id: '1776227223762'
+      position:
+        x: 1252.8678728751918
+        y: 41.62829473122943
+      positionAbsolute:
+        x: 1252.8678728751918
+        y: 41.62829473122943
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.1
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 4c1c7070-aa37-4377-af79-abb4bb5bef4d
+          role: system
+          text: '# Role: 高级文本清洗与降噪专家 (Text Preprocessing Expert)
+
+
+            # Objective:
+
+            你的唯一任务是对原始的、可能包含大量噪点的输入文本进行“清洗”和“降噪”。你需要剔除所有无意义的废话，修复机器识别错误，并输出结构清晰、只保留核心关键信息的纯文本。
+
+
+            # Context (动态输入上下文):
+
+            - 当前处理的数据来源类型是：{{#1776227223762.source_type#}}
+
+            （注：如果是 "audio_transcription"，文本将包含大量语气词、口语化重复和废话；如果是 "image_ocr"，可能存在轻微断句错误或形近字错误；如果是
+            "user_direct_input" 或 "document_extraction"，文本相对干净，只需做轻量级梳理。）
+
+
+            # Rules (核心清洗法则):
+
+            1. 【精准去噪】无情地删除所有语气词（如“嗯、啊、那个、对吧、然后呢”）、无意义的寒暄、以及口语化的重复表达（比如把“我们其实、其实可以这样”清洗为“我们可以这样”）。
+
+            2. 【智能纠错】基于上下文语义，自动修复因语音转文字（ASR）或图文转换（OCR）导致的明显错别字或同音字错误，补齐缺失的标点符号。
+
+            3. 【语义保真（最高红线）】你的任务是“降噪”而不是“总结”。绝对不能删减任何具体的人名、时间、数字、专业术语、需求细节或争议点。必须100%保留原始文本的核心信息量。
+
+            4. 【重塑可读性】将碎片化的口语长句切分为逻辑清晰的短句，必要时按照语义进行合理的段落划分，使输出的文本具备极高的书面可读性。
+
+
+            # Output Format:
+
+            - 请直接输出清洗后的纯文本（Plain Text）。
+
+            - 绝对不要输出任何前缀（如“清洗后的文本是：”或“好的”）。
+
+            - 绝对不要使用 JSON 格式或 markdown 代码块语法。
+
+
+            # Input Text:
+
+            {{#1776227223762.result_text#}}'
+        selected: false
+        title: 文本降噪节点
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1776228336434'
+      position:
+        x: 1528.9741121767374
+        y: -102.19806754301581
+      positionAbsolute:
+        x: 1528.9741121767374
+        y: -102.19806754301581
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        classes:
+        - id: '1776231277313'
+          name: 触发条件：用户明确要求“生成PRD / 提取需求说明”，或者在无明确指令时，文本绝大部分在讨论产品功能规划、痛点和验收标准。
+        - id: '2'
+          name: 触发条件：**【高优先级】**只要用户明确要求“画图 / 生成流程图 / 梳理逻辑图”，或者文本重点在探讨“如果...就... /
+            判定条件 / 异常重试”等极其复杂的流转链路，立刻走此分类。
+        - id: '1'
+          name: 触发条件：用户明确要求“提取待办 / 分配任务 / 整理执行清单”，或者讨论中频繁出现责任到人、排期节点的敲定。
+        - id: '1776231277838'
+          name: 触发条件：**【最高兜底】**用户明确要求“写总结 / 整理纪要 / 提炼会议内容”，或者用户的要求包含多个意图（既要总结又要画图时，优先走通用总结兜底）。
+        instruction: '# Role: 智能会议中央调度系统 (Master Router)
+
+
+          # Objective:
+
+          你是一个极度理性的意图分类网关。你需要综合分析【用户的明确输入指令】和【会议文本内容】，将当前任务精准路由到最匹配的下游生产线。
+
+
+          # Core Routing Rules (最高路由法则):
+
+          1. 【指令霸权 (Instruction Overrides Content)】：如果用户在输入框或文本末尾<user_input>提出了明确的“动作指令”（例如：“帮我总结”、“帮我画图”、“提取待办”），你必须**无条件优先遵从该指令**，即使会议文本看起来极其像在讨论
+          PRD！
+
+          2. 【内容推断 (Content Fallback)】：只有当用户没有任何明确诉求（例如只扔了一段聊天记录什么都没说）时，你才可以通过分析文本的侧重点（如偏向需求、偏向逻辑链路、偏向分工）来推断分类。
+
+          <user_input>
+
+          {{#sys.query#}}
+
+          </user_input>'
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        query_variable_selector:
+        - '1776228336434'
+        - text
+        selected: false
+        title: 问题分类器 2
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 245
+      id: '1776231274718'
+      position:
+        x: 1845.8082071060123
+        y: -238.1073823526237
+      positionAbsolute:
+        x: 1845.8082071060123
+        y: -238.1073823526237
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 398e87a1-80a2-4b84-b17f-a44c5bdc48ab
+          role: system
+          text: '# Role: 资深产品架构师 (专注于飞书协同生态)
+
+
+            # Objective:
+
+            你需要从清洗后的会议记录中，提取业务逻辑和系统约束，并将其转化为一份专为【飞书群消息】阅读优化的结构化 PRD。要求逻辑严密、极其精简，且视觉排版适合在移动端和
+            PC 端即时通讯窗口中快速扫读。
+
+
+            # Core Rules (质量与格式底线):
+
+            1. 【禁用星号】：绝对禁止在全篇输出中使用任何星号。列表项请统一使用短横线（-）或数字，如需强调重点，请直接调整语序或使用 Emoji 辅助，切勿使用星号加粗。
+
+            2. 【飞书排版兼容】：禁止使用 HTML 标签、复杂表格或多层嵌套代码块。保持极简的纯文本和单层列表排版。
+
+            3. 【视觉锚点】：必须严格使用下方模板中提供的 Emoji 作为各模块大标题前缀，以提升群内阅读体验。
+
+            4. 【反幻觉与兜底】：绝对忠于原始文本。如果某模块在会议中未提及，禁止脑补，请在该模块下使用“> ⚠️ 暂无记录，需后续对齐”作为占位符报警。
+
+
+            # Output Framework (飞书专属信息架构):
+
+            请严格保留以下五大核心模块的标题框架，但模块内部的具体表达形式不作死板限制，只要能清晰、准确地传达对应的业务逻辑即可：
+
+
+            🎯 一、 需求背景与目标
+
+            (灵活概括本次需求要解决的核心痛点，以及最终希望达成的业务价值)
+
+
+            👤 二、 核心用户故事
+
+            (简明扼要地描述相关角色的核心诉求。无需死守固定句式，只要讲清“谁用、怎么用、想要什么结果”即可)
+
+
+            ⚙️ 三、 业务逻辑与边界约束
+
+            (精简提炼核心功能的触发条件、正常流转过程，以及异常断网、空数据等情况的兜底拦截机制)
+
+
+            ✅ 四、 验收标准
+
+            (列出关键的测试验证点。只要能清晰指导研发和测试的验收工作即可，按优先级或模块自然罗列)
+
+
+            ⚠️ 五、 风险与待确认事项
+
+            (单独罗列会议中的争议点、被延期的功能、未明确的负责人或悬而未决的事项，提醒群内干系人重点关注)
+
+
+            ---
+
+            (请注意：直接输出纯文本排版，绝对不要带有 ```markdown 的代码块包裹符，且全文严禁出现任何星号)
+
+
+            # Input Source: {{#1776228336434.text#}}'
+        selected: false
+        title: Feishu_Webhook
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1776235667693'
+      position:
+        x: 2183.1658026404407
+        y: -382.7217326609217
+      positionAbsolute:
+        x: 2183.1658026404407
+        y: -382.7217326609217
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-89
+            key: ''
+            type: text
+            value: "{\n  \"msg_type\": \"text\",\n  \"content\": {\n    \"text\":\
+              \ \"{{#1776235667693.text#}}\"\n  }\n}"
+          type: json
+        headers: ''
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          connect: 10
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 10
+          write: 10
+        title: HTTP 请求
+        type: http-request
+        url: https://open.feishu.cn/open-apis/bot/v2/hook/34248076-623e-4e87-aafc-380401ead7cf
+        variables: []
+      height: 168
+      id: '1776235672061'
+      position:
+        x: 2477.2297984544916
+        y: -382.7217326609217
+      positionAbsolute:
+        x: 2477.2297984544916
+        y: -382.7217326609217
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 5c9fd52f-a6df-41e4-b529-ed3615ff8862
+          role: system
+          text: "# Role: 资深产品架构师与敏捷需求分析引擎 (Senior Product Architect)\n\n# Objective:\n\
+            你需要从清洗后的会议记录中，提取并重构出一份具备极高工程落地指导价值的 PRD（产品需求文档）。你的产出必须“无歧义、可检验、可追溯”，能够直接作为研发编码和\
+            \ QA 测试的基准契约。\n\n# Core Rules (质量与逻辑底线):\n1. 【反幻觉红线】：绝对忠于会议原始文本。严禁利用预训练知识“脑补”功能细节、捏造数据指标或假定未提及的规则。\n\
+            2. 【闭环验证思维】：你提取的每一个功能逻辑，都必须能在“验收标准”中找到对应的检验方法。如果逻辑无法被测试，说明你的提取存在缺陷。\n\
+            3. 【自适应排版】：你可以根据实际业务类型（如前端交互、后端逻辑、策略算法）自由选择最清晰的文本展示结构（如列表、表格、流程描述），但必须完整涵盖下方的【核心信息架构】。\n\
+            \n# Information Architecture (必须提取的核心信息维度):\n在你的输出中，请确保以下五个维度的信息被清晰、结构化地呈现：\n\
+            \n一、 价值溯源与用户目标 (Value & Goals)\n- 业务背景：解决什么现实痛点？\n- 核心目标：期望达成什么量化或定性的业务价值？\n\
+            \n二、 敏捷需求描述 (Agile User Stories)\n- 提取并转化会议中的需求意图，使用标准格式呈现：\n  “作为 [具体用户/系统角色]，我想要\
+            \ [执行某操作/获得某功能]，以便于 [实现某业务价值]。”\n\n三、 业务逻辑与系统边界 (Logic & Constraints)\
+            \ [核心提炼区]\n(针对提炼出的每个功能模块，必须穿透表象，榨取以下底层规则：)\n- 触发机制 (Triggers)：动作的前置条件或触发器是什么？\n\
+            - 规则与流转 (Business Rules & Flow)：核心判定逻辑、状态机流转或页面交互路径。\n- 异常与边界 (Edge Cases)：强制提取文本中潜藏的“失败处理、数据为空、权限越界、并发限制”等负向逻辑。\n\
+            \n四、 验收标准与优先级 (Acceptance Criteria & Priority)\n- 优先级判定：使用 MoSCoW 法则（Must\
+            \ 必须有 / Should 应该有 / Could 可以有 / Won't 本次不做）对需求进行分类。\n- 验收标准 (AC)：使用“Given\
+            \ (倘若) / When (当) / Then (那么)”的断言格式，明确研发做完后，测试团队该如何验证。\n\n五、 风险与逻辑断层警报\
+            \ (Risks & Open Issues)\n- 【灵活约束兜底】：如果你在文本中发现某个核心功能缺失了“异常处理规则”或“验收标准”，或者各方在会议中存在未拍板的争议点，请在此处使用高亮格式（如：`>\
+            \ ⚠️ 逻辑缺失/待确认：...`）向产品经理发出警报，强制暴露风险。\n\n# Input Source:\n{{#1776228336434.text#}}"
+        selected: false
+        title: PRD_Generator
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1776236288231'
+      position:
+        x: 2183.1658026404407
+        y: -505.95828803633157
+      positionAbsolute:
+        x: 2183.1658026404407
+        y: -505.95828803633157
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: f91cc6d1-5e0e-4dcc-9e83-f91b362de94e
+          role: system
+          text: "# Role: 高级系统建模专家 (draw.io 视觉语言架构师)\n\n# Objective:\n解析会议逻辑，将其转化为\
+            \ draw.io XML。你必须严格遵守下方的【组件字典】，根据业务语义选择最合适的图形样式，禁止自行发明样式。\n\n# Component\
+            \ Library (视觉组件字典):\n遇到以下业务语义时，必须在 <mxCell> 的 style 属性中使用对应的代码：\n\n1.\
+            \ 【流程起始/结束】 (Start/End): \n   - 语义：开始、结束、完成。\n   - Style: `rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#dae8fe;strokeColor=#6c8ebf;`\n\
+            2. 【标准操作步骤】 (Task):\n   - 语义：做某事、执行、处理、计算。\n   - Style: `whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;`\n\
+            3. 【决策判定】 (Decision):\n   - 语义：判断、如果、检查、审核。\n   - Style: `rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;`\n\
+            4. 【数据存储/持久化】 (Database):\n   - 语义：保存到数据库、读取记录、存储。\n   - Style: `shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f5f5f5;strokeColor=#666666;`\n\
+            5. 【外部交互/消息】 (Message/Email):\n   - 语义：发邮件、推送通知、短信告知。\n   - Style: `shape=message;whiteSpace=wrap;html=1;outlineConnect=0;fillColor=#d5e8d4;strokeColor=#82b366;`\n\
+            6. 【用户/角色】 (Actor):\n   - 语义：管理员操作、用户点击、某人介入。\n   - Style: `shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;`\n\
+            \n7.【Edge/Connection Logic (连线约束逻辑）】: 会议讨论的流程必须通过“连线（Edge）”串联起来。 遇到节点之间的流转、分支或先后顺序时，必须生成对应的连线\
+            \ XML。 - 【标准连线结构】： 必须包含 `edge=\"1\"`，并且必须明确指定 `source`（起始节点的 ID）和 `target`（目标节点的\
+            \ ID）。 - 【连线样式 (Style)】： 统一使用带有箭头的实线：`edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;`\
+            \ - 【条件分支上的文字】： 如果连线是从【决策判定】节点出来的（例如“是/否”、“成功/失败”），必须在连线的 `value` 属性中填入对应的条件文字。\
+            \ 连线 XML 代码示例（将节点 ID 替换为实际值）： <mxCell id=\"自动递增的独立ID\" value=\"条件(如有)\"\
+            \ style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\"\
+            \ edge=\"1\" parent=\"1\" source=\"起始节点ID\" target=\"目标节点ID\"> <mxGeometry\
+            \ relative=\"1\" as=\"geometry\" /> </mxCell>\n\n# Core Rules (严格约束):\n\
+            - 【语义识别】：如果内容不符合上述任何特定组件，统一使用【标准操作步骤】。\n- 【逻辑断层】：如果会议中某一步逻辑不通，节点样式强制使用：`fillColor=#f8cecc;strokeColor=#b85450;`\
+            \ (红色警告色)。\n- 【XML 结构】：必须保持唯一的 id 递增，且包含完整的 mxGraphModel 闭合标签。\n\n# Input\
+            \ Source: \n{{#1776228336434.text#}}\n\n# Output Requirements: \n1. 必须将生成的\
+            \ XML 代码包裹在 markdown 的代码块中输出，代码块语言标注为 xml。 \n2. 严禁输出任何解释性文字。 \n输出格式必须严格如下所示：\
+            \ \n```xml \n<mxGraphModel>\n...XML 代码...\n</mxGraphModel>"
+        retry_config:
+          max_retries: 5
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: XML/draw.io
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1776238691128'
+      position:
+        x: 2183.1658026404407
+        y: -213.27461456232098
+      positionAbsolute:
+        x: 2183.1658026404407
+        y: -213.27461456232098
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1776236288231.text#}}/'
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 102
+      id: '1776238740276'
+      position:
+        x: 2477.2297984544916
+        y: -505.95828803633157
+      positionAbsolute:
+        x: 2477.2297984544916
+        y: -505.95828803633157
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1776238691128.text#}}//'
+        selected: false
+        title: 直接回复 4
+        type: answer
+        variables: []
+      height: 102
+      id: '1776238756231'
+      position:
+        x: 2477.2297984544916
+        y: -213.27461456232098
+      positionAbsolute:
+        x: 2477.2297984544916
+        y: -213.27461456232098
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.2
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: aea40a1d-0299-4aac-9949-1d6bbd451274
+          role: system
+          text: "# Role: 资深项目交付经理 (Delivery Manager)\n\n# Objective:\n你的任务是从会议文本中精准提取出所有的“待办事项（To-Do）”、“责任分配”和“时间节点”，并使用层级分明的\
+            \ Markdown 格式输出一份清晰的执行清单。\n\n# Core Rules (数据保真与逻辑底线):\n1. 【零幻觉红线】：你是一个严谨的记录者。只提取文本中真实提到的人名、时间和任务。绝对禁止根据常识自行补全未提及的日期、周期或负责人。\n\
+            2. 【缺省追踪】：\n   - 如果提到了任务但没说谁做，必须强制标记为 `[⚠️ 负责人：待认领]`。\n   - 如果没说什么时候完成，必须强制标记为\
+            \ `[⚠️ 期限：未定]`。\n3. 【依赖关系展示】：留意文本中的先后顺序（如“等A做完再做B”）。你必须通过列表的嵌套结构或明确的文字备注，把这种依赖关系表达出来。\n\
+            4. 【灵活结构】：不强制使用表格，请使用 Markdown 的标题（#）、嵌套列表（-）、加粗（**）等语法，以最直观的方式组织信息（可以按功能模块分类，也可以按负责人分类，视文本情况而定）。\n\
+            \n# Output Guidelines (建议的层级呈现方式):\n\n你可以根据文本的实际内容组织排版，但请确保包含以下逻辑层级：\n\
+            \n### \U0001F3AF 明确执行项 (Action Items)\n(按模块或按人名进行归类，层级分明地列出任务)\n- **[模块/角色名]**\n\
+            \  - **任务内容**：(具体要做什么)\n    - \U0001F464 负责人：(人名 或 `[⚠️ 待认领]`)\n    -\
+            \ ⏳ 截止日：(日期 或 `[⚠️ 未定]`)\n    - \U0001F517 前置依赖：(如果需要等其他任务完成，请在此注明；若无则可省略)\n\
+            \n### ⚠️ 风险与待对齐 (Risks & Open Items)\n(将上方出现过 `待认领` 或 `未定` 的高危任务，以及会议中悬而未决的行动点，统一在此处高亮列出，提醒团队跟进)\n\
+            - > 风险描述...\n\n# Input Source:\n{{#1776228336434.text#}}"
+        selected: false
+        title: To-do list
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1776241051343'
+      position:
+        x: 2183.1658026404407
+        y: -67.47287505483396
+      positionAbsolute:
+        x: 2183.1658026404407
+        y: -67.47287505483396
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1776241051343.text#}}'
+        selected: false
+        title: 直接回复 5
+        type: answer
+        variables: []
+      height: 102
+      id: '1776241144338'
+      position:
+        x: 2477.2297984544916
+        y: -67.47287505483396
+      positionAbsolute:
+        x: 2477.2297984544916
+        y: -67.47287505483396
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.1
+          mode: chat
+          name: google/gemini-3.1-flash-lite-preview
+          provider: langgenius/openrouter/openrouter
+        prompt_template:
+        - id: 6cd0b995-9c69-42e8-ad0b-e36ea53e5626
+          role: system
+          text: "# Role: 资深高管助理与会议提炼专家 (Executive Assistant & Summarizer)\n\n# Objective:\n\
+            你的任务是处理一段未经过滤的会议转录文本。你需要剔除寒暄、废话和偏题内容，精准提炼会议的核心议题、决策共识和遗留问题，并以层级明确、逻辑极其清晰的\
+            \ Markdown 格式输出会议提要。\n\n# Core Rules (质量控制与保真红线):\n1. 【绝对保真】：只总结文本中真实探讨过的信息。如果会议没有达成结论，就如实记录“未达成共识”，绝对禁止自行脑补、推测或替团队做决定。\n\
+            2. 【高信噪比】：大幅浓缩原文。忽略语气词、口语重复和无关紧要的闲聊，直击业务核心。\n3. 【客观中立】：使用中立客观的陈述句（如“会议决定...”或“某某指出...”），绝对不要夹杂个人的主观评价或夸张修辞。\n\
+            \n# Output Guidelines (逻辑层级与排版指引):\n不要使用任何僵化的固定模板。请根据会议内容的实际长度和逻辑脉络，灵活使用\
+            \ Markdown 的多级标题（#）、列表（-）和加粗（**）语法进行自然排版。\n\n但在你的排版结构中，必须清晰地体现以下三个逻辑层次：\n\
+            \n1. \U0001F3AF **核心概览 (Overview)**：\n   在开头用极简的一两段话，点明会议的核心议题、起因以及最终的整体进展/基调，让没参会的人扫一眼就知道发生了什么。\n\
+            \n2. \U0001F4A1 **观点与共识 (Key Takeaways & Consensus)**：\n   这是总结的主体。请根据会议内容，按“业务模块”或“讨论主题”进行分类提炼。重点列出大家达成一致的决定、通报的重要信息以及核心的业务观点。\n\
+            \n3. ⚠️ **未决与探讨点 (Open Issues)**：\n   单独罗列会议中“争论不休没定论”、“明确被延期”或“需要拉群再对齐”的事项。这是防范团队风险的关键。如果本次会议一切顺利，请简要说明“无明显遗留争议”。\n\
+            \n# Input Source:\n{{#1776228336434.text#}}"
+        selected: false
+        title: Meeting Summary
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1776241168796'
+      position:
+        x: 2183.1658026404407
+        y: 58.52712494516604
+      positionAbsolute:
+        x: 2183.1658026404407
+        y: 58.52712494516604
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    - data:
+        answer: '{{#1776241168796.text#}}'
+        selected: false
+        title: 直接回复 6
+        type: answer
+        variables: []
+      height: 102
+      id: '1776241481167'
+      position:
+        x: 2477.2297984544916
+        y: 58.52712494516604
+      positionAbsolute:
+        x: 2477.2297984544916
+        y: 58.52712494516604
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+    viewport:
+      x: 241.82507166892083
+      y: 588.8544508737521
+      zoom: 0.7578582832552003
+  rag_pipeline_variables: []
