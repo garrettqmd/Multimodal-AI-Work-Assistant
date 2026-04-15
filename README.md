@@ -51,7 +51,7 @@
 
 ## 🏗️ 系统架构与数据流 (System Architecture)
 
-![系统架构图](./assets/architecture_placeholder.png) 
+![系统架构图](./assets/架构图.png) 
 *(说明：请将 Dify 导出的架构流转截图替换此处的占位符图片)*
 
 系统采用高内聚、低耦合的路由分发模式：
