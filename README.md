@@ -55,14 +55,14 @@
 2. **预处理与重写层**：Python 格式化脚本降噪 + LLM 多轮对话上下文补全。
 3. **中央调度网关**：分析动作指令，执行精确的路由分发（多端分流）。
 4. **生产线与引擎层**：PRD 生成 / 代码渲染 / 混合检索 + Rerank 重排打分。
-5. **外部触达与兜底层**：生成带溯源引用的最终回答，或通过 HTTP 请求自动组装 JSON 推送至飞书/钉钉。
+5. **外部触达与兜底层**：生成带溯源引用的最终回答，或通过 HTTP 请求自动组装 JSON 推送至飞书。
 
 ---
 
 ## 🛠️ 技术栈与依赖
 
 * **核心编排引擎**: Dify (Agentic Workflow)
-* **大语言模型**: Gemini 3.1 Pro/Flash, GPT-4o, DeepSeek V3 等
+* **大语言模型**: Gemini 3.1 Flash, GPT-5 mini, DeepSeek V3.2 等
 * **检索与重排模型**: BCEmbedding, BGE-Reranker-v2
 * **数据处理与清洗**: Python 3, Markdown Structural Chunking
 * **API 集成**: OpenRouter, 飞书开放平台 Webhook
