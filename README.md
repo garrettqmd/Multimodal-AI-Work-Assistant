@@ -1,6 +1,6 @@
 # Multimodal-AI-Work-Assistant (多模态 AI 工作助手)
 
-> 基于 Dify 构建的企业级多模态 AI 助手。项目集成了**多模态会议纪要处理**、**智能周报生成**与**高阶 RAG 企业知识库**三大核心业务引擎。通过 Agentic Workflow（智能体工作流）、进阶 RAG 策略与 Prompt 工程，破解通用大模型难以直击真实业务场景的难题，实现从复杂信息处理到冗余咨询拦截的分钟级降本增效。
+> 基于 Dify 构建的企业级多模态 AI 助手。项目集成了**多模态会议纪要处理**与**高阶 RAG 企业知识库**两大核心业务引擎。通过 Agentic Workflow（智能体工作流）、进阶 RAG 策略与 Prompt 工程，破解通用大模型难以直击真实业务场景的难题，实现从复杂信息处理到冗余咨询拦截的分钟级降本增效。
 
 [![Powered by Dify](https://img.shields.io/badge/Powered%20by-Dify-orange.svg)](https://dify.ai)
 [![AI Models](https://img.shields.io/badge/AI%20Models-Gemini%20%7C%20Claude%20%7C%20DeepSeek-green.svg)](#)
